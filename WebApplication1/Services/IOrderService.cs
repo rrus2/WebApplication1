@@ -10,7 +10,7 @@ namespace WebApplication1.Services
 {
     public interface IOrderService
     {
-        Task<Order> CreateOrder(ProductViewModel model);
+        Task<Order> CreateOrder(ProductViewModel model, string name);
         Task<Order> DeleteOrder(int id);
     }
 }

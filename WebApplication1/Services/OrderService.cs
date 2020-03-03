@@ -17,10 +17,14 @@ namespace WebApplication1.Services
         {
             _context = context;
         }
-        public async Task<Order> CreateOrder(ProductViewModel model)
+        public async Task<Order> CreateOrder(ProductViewModel model, string name)
         {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == name);
             var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductID == model.ProductID);
-            throw new NotImplementedException();
+            var order = new Order { Product = product, ApplicationUser = user, Amount = model.Amount };
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            return order;
         }
 
         public Task<Order> DeleteOrder(int id)

@@ -9,48 +9,56 @@
 <div>
     @using (Html.BeginForm("Buy", "Products", FormMethod.Post, new { @class = "form-group" }))
     {
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
+        @Html.AntiForgeryToken()
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(x => x.ProductID)
+        @Html.HiddenFor(x => x.Stock)
+        @Html.HiddenFor(x => x.Price)
+        @Html.HiddenFor(x => x.Name)
+        @Html.HiddenFor(x => x.ImagePath)
+        @Html.HiddenFor(x => x.Genre)
+        @Html.HiddenFor(x => x.GenreID)
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Stock)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
 
-            <dd>
-                @Html.DropDownListFor(x => x.Amount, (SelectList)ViewBag.Amount)
-            </dd>
+        <dd>
+            @Html.DropDownListFor(x => x.Amount, (SelectList)ViewBag.Amount)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
 
-            <dd>
-                <img src="@Model.ImagePath" alt="no image" width="250" height="250" class="img-responsive" />
-            </dd>
+        <dd>
+            <img src="@Model.ImagePath" alt="no image" width="250" height="250" class="img-responsive" />
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.GenreID)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.GenreID)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Genre.Name)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Genre.Name)
+        </dd>
 
-        </dl>
+    </dl>
         if (User.Identity.IsAuthenticated)
         {
             <input type="submit" value="Buy" class="btn btn-primary" />

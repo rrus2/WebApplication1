@@ -57,7 +57,7 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult> Buy(ProductViewModel model)
         {
             var name = HttpContext.User.Identity.Name;
-            await _productService.CreateProduct(model, null);
+            await _orderService.CreateOrder(model, name);
             return View("ThankYouBuyProduct", model);
         }
 
