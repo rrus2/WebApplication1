@@ -1,0 +1,61 @@
+﻿@model WebApplication1.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    @using (Html.BeginForm("Buy", "Products", FormMethod.Post, new { @class = "form-group" }))
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Stock)
+            </dt>
+
+            <dd>
+                @Html.DropDownListFor(x => x.Amount, (SelectList)ViewBag.Amount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
+
+            <dd>
+                <img src="@Model.ImagePath" alt="no image" width="250" height="250" class="img-responsive" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GenreID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre.Name)
+            </dd>
+
+        </dl>
+        if (User.Identity.IsAuthenticated)
+        {
+            <input type="submit" value="Buy" class="btn btn-primary" />
+        }
+    }
+    <hr />
+
+</div>

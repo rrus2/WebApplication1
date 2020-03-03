@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+
+@{
+    ViewBag.Title = "IndexAsync";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Products" )
+</p>
+<img src="~/Content/Images/b2599ebf-b4e3-4ecd-8329-75c501630e92ak47.jpg" />   
+<div class="jumbotron bg-danger">   
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 bg-success text-center">
+                <h2>@item.Name</h2>
+                <p>@item.Price $</p>
+                <img src="@item.ImagePath" alt="no image" height="150" width="150"/>
+                <p>@Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID }, new { @class = "btn btn-primary" })</p>
+            </div>
+        }
+    </div>
+</div>

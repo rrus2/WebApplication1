@@ -1,0 +1,9 @@
+﻿@model WebApplication1.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "ThankYouBuyProduct";
+}
+
+<h2>Thank you for buying @Model.Amount of @Model.Name</h2>
+
+@Html.ActionLink("Back to list", "IndexAsync", "Products")
