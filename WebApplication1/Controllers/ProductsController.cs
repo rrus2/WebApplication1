@@ -43,7 +43,7 @@ namespace WebApplication1.Controllers
             }
 
             await _productService.CreateProduct(model, file);
-            return View("ThankYouCreateProduct");
+            return View("ThankYouCreateProduct", model);
         }
         public async Task<ActionResult> Details(int id)
         {
